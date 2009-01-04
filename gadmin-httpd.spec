@@ -1,3 +1,7 @@
+# if I fix the string literal errors according to the wiki Problems
+# page, it crashes on startup - AdamW 2009/01
+%define Werror_cflags %nil
+
 Summary:	Easy to use GTK+ frontend for the Apache HTTPD webserver
 Name:		gadmin-httpd
 Version:	0.1.2
