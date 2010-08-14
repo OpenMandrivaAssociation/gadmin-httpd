@@ -4,14 +4,13 @@
 
 Summary:	Easy to use GTK+ frontend for the Apache HTTPD webserver
 Name:		gadmin-httpd
-Version:	0.1.2
-Release:	%mkrel 3
+Version:	0.1.4
+Release:	%mkrel 1
 License:	GPLv3+
 Group:		System/Configuration/Networking
 URL:		http://www.gadmintools.org/
 Source0:	http://mange.dynalias.org/linux/%{name}/%{name}-%{version}.tar.gz
 Source1:	%{name}.pam
-Patch0:		gadmin-httpd-0.1.2-fix-build.patch
 BuildRequires:	gtk+2-devel
 BuildRequires:	imagemagick
 BuildRequires:  desktop-file-utils
@@ -26,7 +25,6 @@ GAdmin-HTTPD is an easy to use GTK+ frontend for the Apache httpd webserver.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
 %configure2_5x
