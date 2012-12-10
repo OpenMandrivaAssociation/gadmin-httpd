@@ -5,7 +5,7 @@
 Summary:	Easy to use GTK+ frontend for the Apache HTTPD webserver
 Name:		gadmin-httpd
 Version:	0.1.4
-Release:	%mkrel 1
+Release:	2
 License:	GPLv3+
 Group:		System/Configuration/Networking
 URL:		http://www.gadmintools.org/
@@ -18,7 +18,6 @@ Requires:	apache
 Requires:	usermode-consoleonly
 Obsoletes:	gadminhttpd
 Provides:	gadminhttpd
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 GAdmin-HTTPD is an easy to use GTK+ frontend for the Apache httpd webserver.
@@ -31,7 +30,6 @@ GAdmin-HTTPD is an easy to use GTK+ frontend for the Apache httpd webserver.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 #INSTALL_USER=`id -un` INSTALL_GROUP=`id -gn`
 
@@ -41,9 +39,6 @@ install -d %{buildroot}%{_sysconfdir}/security/console.apps
 
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/%{name}
 install -m 644 etc/security/console.apps/%{name} %{buildroot}%{_sysconfdir}/security/console.apps/%{name}
-
-# locales
-%find_lang %{name}
 
 # Icons
 mkdir -p %{buildroot}%{_iconsdir}/hicolor/{16x16,32x32,48x48}/apps
@@ -76,20 +71,7 @@ _EOF_
 
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
-
-%clean
-rm -rf %{buildroot}
-
-%files -f %{name}.lang
+%files
 %defattr(-,root,root,0755)
 %doc COPYING AUTHORS ChangeLog
 %config(noreplace) %{_sysconfdir}/pam.d/%{name}
@@ -99,6 +81,36 @@ rm -rf %{buildroot}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/*.png
 %{_datadir}/pixmaps/%{name}/*.png
-%{_datadir}/pixmaps/%{name}/%{name}.png
 %{_iconsdir}/hicolor/*/apps/%{name}.png
+
+
+
+%changelog
+* Sat Aug 14 2010 Funda Wang <fwang@mandriva.org> 0.1.4-1mdv2011.0
++ Revision: 569754
+- new version 0.1.4
+
+* Sun Feb 28 2010 Funda Wang <fwang@mandriva.org> 0.1.2-3mdv2010.1
++ Revision: 512756
+- fix build
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+
+* Sun Jan 04 2009 Adam Williamson <awilliamson@mandriva.org> 0.1.2-2mdv2009.1
++ Revision: 324163
+- install consolehelper link to /usr/bin not /usr/sbin, so it works right
+- don't use ALL CAPS in menu entry
+- fd.o icons
+- clean description a bit
+- new license policy
+- disable Werror (if I try and fix it, it crashes on startup)
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - lowercase ImageMagick
+
+* Tue Sep 09 2008 Emmanuel Andry <eandry@mandriva.org> 0.1.2-1mdv2009.0
++ Revision: 283230
+- import gadmin-httpd
+
 
