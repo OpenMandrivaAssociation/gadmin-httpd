@@ -5,7 +5,7 @@
 Summary:	Easy to use GTK+ frontend for the Apache HTTPD webserver
 Name:		gadmin-httpd
 Version:	0.1.4
-Release:	3
+Release:	4
 License:	GPLv3+
 Group:		System/Configuration/Networking
 Url:		http://www.gadmintools.org/
