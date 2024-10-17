@@ -8,7 +8,7 @@ Version:	0.1.4
 Release:	4
 License:	GPLv3+
 Group:		System/Configuration/Networking
-Url:		http://www.gadmintools.org/
+Url:		https://www.gadmintools.org/
 Source0:	http://mange.dynalias.org/linux/%{name}/%{name}-%{version}.tar.gz
 Source1:	%{name}.pam
 BuildRequires:	desktop-file-utils
