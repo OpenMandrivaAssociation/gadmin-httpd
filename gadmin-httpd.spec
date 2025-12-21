@@ -11,6 +11,11 @@ Group:		System/Configuration/Networking
 Url:		https://www.gadmintools.org/
 Source0:	http://mange.dynalias.org/linux/%{name}/%{name}-%{version}.tar.gz
 Source1:	%{name}.pam
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
 BuildRequires:	pkgconfig(gtk+-2.0)
